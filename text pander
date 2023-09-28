@@ -1,0 +1,27 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const expanderForm = document.getElementById("expander-form");
+    const shortcutsList = document.getElementById("shortcuts");
+    
+    expanderForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        
+        const shortcutInput = document.getElementById("shortcut");
+        const expandedTextInput = document.getElementById("expanded-text");
+        
+        const shortcut = shortcutInput.value;
+        const expandedText = expandedTextInput.value;
+        
+        if (shortcut && expandedText) {
+            // Create a new list item for the shortcut
+            const listItem = document.createElement("li");
+            listItem.textContent = `${shortcut} → ${expandedText}`;
+            
+            // Add the list item to the shortcuts list
+            shortcutsList.appendChild(listItem);
+            
+            // Clear the input fields
+            shortcutInput.value = "";
+            expandedTextInput.value = "";
+        }
+    });
+});
